@@ -1,0 +1,27 @@
+# Dependencies and build output
+node_modules/
+out/
+release/
+dist/
+coverage/
+*.log
+npm-debug.log*
+
+# Local secrets / application data
+.env
+.env.*
+!.env.example
+secrets.bin
+companion.sqlite
+companion-data.json
+
+# Editor / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+
+# Test caches
+.vitest/

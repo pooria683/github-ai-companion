@@ -1,0 +1,81 @@
+{
+  "name": "github-ai-companion",
+  "version": "1.0.0",
+  "description": "An autonomous AI-powered Windows desktop character & GitHub development agent.",
+  "main": "out/main/index.js",
+  "author": "GitHub AI Companion",
+  "license": "MIT",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "package": "electron-builder --win portable",
+    "package:installer": "electron-builder --win nsis",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "dependencies": {
+    "@octokit/rest": "^21.0.0",
+    "lucide-react": "^0.441.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
+    "react-router-dom": "^7.18.5",
+    "remark-gfm": "^4.0.1",
+    "sql.js": "^1.10.0",
+    "zustand": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@types/sql.js": "^1.4.11",
+    "@types/uuid": "^10.0.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "electron": "^45.3.1",
+    "electron-builder": "^26.18.0",
+    "electron-vite": "^6.0.0",
+    "typescript": "^5.5.4",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.0"
+  },
+  "build": {
+    "appId": "com.githubai.companion",
+    "productName": "GitHub AI Companion",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "out/**/*",
+      "resources/**/*"
+    ],
+    "win": {
+      "target": [
+        "portable",
+        "nsis"
+      ],
+      "icon": "resources/icon.ico"
+    },
+    "portable": {
+      "artifactName": "GitHubAICompanion-Portable-${version}.exe"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "overrides": {
+    "@electron/universal": {
+      "minimatch": "^11.0.8"
+    },
+    "app-builder-lib": {
+      "minimatch": "^11.0.8"
+    }
+  }
+}
